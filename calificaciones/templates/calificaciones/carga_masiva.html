@@ -1,0 +1,44 @@
+{% extends 'calificaciones/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header text-white" style="background-color: #001A4B;">
+                <h4 class="mb-0">Carga Masiva de Calificaciones</h4>
+            </div>
+            <div class="card-body p-4">
+                
+                <div class="alert alert-info d-flex align-items-center mb-4" role="alert">
+                    <div>
+                        <strong>Instrucciones:</strong><br>
+                        Suba un archivo <strong>.CSV</strong> separado por comas.<br>
+                        Las columnas deben seguir este orden estricto: 
+                        <code>pais, tipo, monto, factor</code>.
+                    </div>
+                </div>
+
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="{{ form.archivo_csv.id_for_label }}" class="form-label fw-bold" style="color: #001A4B;">
+                            Seleccionar Archivo
+                        </label>
+                        {{ form.archivo_csv }}
+                        </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary me-md-2">Cancelar</a>
+                        <button type="submit" class="btn btn-nuam px-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-upload me-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.669 14.539 11.2 12.636 11.2H8.75V15.75a.75.75 0 0 1-1.5 0V11.2H2.636A4.379 4.379 0 0 1 2.636 2.419a4.35 4.35 0 0 1 1.77-.379z"/>
+                            </svg>
+                            Procesar Archivo
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

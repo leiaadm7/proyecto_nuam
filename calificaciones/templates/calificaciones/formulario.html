@@ -1,0 +1,18 @@
+{% extends 'calificaciones/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h4 class="mb-3" style="color: #001A4B;">Nueva Calificación</h4>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-nuam">Guardar Registro</button>
+                    <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
