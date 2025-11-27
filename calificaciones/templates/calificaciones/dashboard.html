@@ -2,7 +2,24 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2 style="color: #001A4B;">Calificaciones Tributarias</h2>
-    <a href="{% url 'nuevo' %}" class="btn btn-nuam">+ Nuevo Registro</a>
+
+    <div class="d-flex gap-2">
+        
+        <!-- Botón Carga masiva -->
+        <a href="{% url 'carga_masiva' %}" class="btn btn-outline-primary">
+            Carga Masiva CSV
+        </a>
+
+        <!-- Botón Historial (Corregido y estilizado) -->
+        <a href="{% url 'historial' %}" class="btn btn-outline-secondary">
+            Historial de Auditoría
+        </a>
+
+        <!-- Botón Nuevo registro -->
+        <a href="{% url 'nuevo' %}" class="btn btn-nuam">
+            + Nuevo Registro
+        </a>
+    </div>
 </div>
 
 <div class="card p-0 overflow-hidden">
@@ -15,6 +32,7 @@
                 <th>Factor</th>
                 <th>Analista</th>
                 <th>Fecha</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -28,11 +46,12 @@
                 <td>{{ c.fecha_registro|date:"d/m/Y H:i" }}</td>
                 <td>
                     <a href="{% url 'editar' c.id %}" class="btn btn-sm btn-outline-primary">Editar</a>
-                    <a href="{% url 'eliminar' c.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Estás seguro de eliminar este registro?')">Eliminar</a>
+                    <a href="{% url 'eliminar' c.id %}" class="btn btn-sm btn-outline-danger"
+                       onclick="return confirm('¿Estás seguro de eliminar este registro?')">Eliminar</a>
                 </td>
             </tr>
             {% empty %}
-            <tr><td colspan="6" class="text-center p-4">No hay datos registrados.</td></tr>
+            <tr><td colspan="7" class="text-center p-4">No hay datos registrados.</td></tr>
             {% endfor %}
         </tbody>
     </table>

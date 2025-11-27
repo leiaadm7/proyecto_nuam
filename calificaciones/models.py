@@ -25,3 +25,11 @@ class Calificacion(models.Model):
     def __str__(self):
         return f"{self.pais} - {self.tipo}"
 
+class LogAuditoria(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    accion = models.CharField(max_length=50) 
+    fecha_hora = models.DateTimeField(auto_now_add=True)
+    detalle = models.TextField() 
+
+    def __str__(self):
+        return f"{self.usuario} - {self.accion} - {self.fecha_hora}"
