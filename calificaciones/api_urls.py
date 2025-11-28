@@ -1,8 +1,11 @@
+from django.urls import path, include
 from rest_framework import routers
 from .api_views import CalificacionViewSet, LogAuditoriaViewSet
 
 router = routers.DefaultRouter()
 router.register(r'calificaciones', CalificacionViewSet)
-router.register(r'logs', LogAuditoriaViewSet)
+router.register(r'historial', LogAuditoriaViewSet)
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+]

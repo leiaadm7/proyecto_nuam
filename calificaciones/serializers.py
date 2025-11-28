@@ -8,30 +8,12 @@ class CalificacionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Calificacion
-        fields = [
-            "id",
-            "pais",
-            "tipo",
-            "monto_base",
-            "factor",
-            "fecha_registro",
-            "analista",
-            "analista_username",
-        ]
+        fields = '__all__'
         read_only_fields = ["analista", "fecha_registro"]
-
 
 class LogAuditoriaSerializer(serializers.ModelSerializer):
     usuario_username = serializers.CharField(source="usuario.username", read_only=True)
 
     class Meta:
         model = LogAuditoria
-        fields = [
-            "id",
-            "usuario",
-            "usuario_username",
-            "accion",
-            "detalle",
-            "fecha_hora",
-        ]
-
+        fields = '__all__'
