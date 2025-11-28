@@ -3,6 +3,8 @@ from .models import Calificacion, LogAuditoria
 
 class CalificacionSerializer(serializers.ModelSerializer):
     analista_username = serializers.CharField(source="analista.username", read_only=True)
+    pais_nombre = serializers.CharField(source='get_pais_display', read_only=True)
+    tipo_nombre = serializers.CharField(source='get_tipo_display', read_only=True)
 
     class Meta:
         model = Calificacion
@@ -32,3 +34,4 @@ class LogAuditoriaSerializer(serializers.ModelSerializer):
             "detalle",
             "fecha_hora",
         ]
+
