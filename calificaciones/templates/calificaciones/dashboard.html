@@ -5,17 +5,23 @@
 
     <div class="d-flex gap-2">
 
+        {% if perms.calificaciones.add_calificacion %}
         <a href="{% url 'carga_masiva' %}" class="btn btn-outline-primary">
             Carga Masiva CSV
         </a>
+        {% endif %}
 
+        {% if perms.calificaciones.view_logauditoria %}
         <a href="{% url 'historial' %}" class="btn btn-outline-secondary">
             Historial de Auditoría
         </a>
+        {% endif %}
 
+        {% if perms.calificaciones.add_calificacion %}
         <a href="{% url 'nuevo' %}" class="btn btn-nuam">
             + Nuevo Registro
         </a>
+        {% endif %}
     </div>
 </div>
 
@@ -42,9 +48,14 @@
                 <td><span class="badge bg-secondary">{{ c.analista.username }}</span></td>
                 <td>{{ c.fecha_registro|date:"d/m/Y H:i" }}</td>
                 <td>
+                    {% if perms.calificaciones.change_calificacion %}
                     <a href="{% url 'editar' c.id %}" class="btn btn-sm btn-outline-primary">Editar</a>
+                    {% endif %}
+
+                    {% if perms.calificaciones.delete_calificacion %}
                     <a href="{% url 'eliminar' c.id %}" class="btn btn-sm btn-outline-danger"
                        onclick="return confirm('¿Estás seguro de eliminar este registro?')">Eliminar</a>
+                    {% endif %}
                 </td>
             </tr>
             {% empty %}
