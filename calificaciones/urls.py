@@ -10,6 +10,7 @@ router.register(r'calificaciones', api_views.CalificacionViewSet)
 router.register(r'historial', api_views.LogAuditoriaViewSet)
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/whoami/', api_views.UserInfoView.as_view(), name='whoami'),
