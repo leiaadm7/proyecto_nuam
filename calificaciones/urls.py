@@ -22,5 +22,5 @@ urlpatterns = [
     path('editar/<int:id>/', views.editar_calificacion, name='editar'),
     path('eliminar/<int:id>/', views.eliminar_calificacion, name='eliminar'),
     path('carga-masiva/', views.carga_masiva, name='carga_masiva'),
-    path('historial-web/', views.historial, name='historial_web'), 
+    path('historial/', views.historial, name='historial'), 
 ]
