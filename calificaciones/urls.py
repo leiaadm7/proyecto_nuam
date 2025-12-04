@@ -12,6 +12,7 @@ router.register(r'historial', api_views.LogAuditoriaViewSet)
 urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/whoami/', api_views.UserInfoView.as_view(), name='whoami'),
     path('api/', include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path('login/', auth_views.LoginView.as_view(template_name='calificaciones/login.html'), name='login'),
