@@ -16,22 +16,14 @@ SECRET_KEY = 'django-insecure-)l#+80ot9w)#=@h)xs6jtdioh-1oxg1o_dqu+y36^$%9)*jcv!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    ".onrender.com",
-    "localhost",
-    "127.0.0.1",
-    "leiaadm7.github.io"
-]
+ALLOWED_HOSTS = ['*']
 
 
-CORS_ALLOWED_ORIGINS = [
-    "https://leiaadm7.github.io",
-    "https://proyecto-nuam.onrender.com",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://leiaadm7.github.io",
     "https://proyecto-nuam.onrender.com",
+    "https://leiaadm7.github.io"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -45,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic', 
     'django.contrib.staticfiles',
     'calificaciones',
     'rest_framework',
@@ -79,7 +72,7 @@ ROOT_URLCONF = 'nuam_holding.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,15 +90,13 @@ WSGI_APPLICATION = 'nuam_holding.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-
 DATABASES = {
     "default": dj_database_url.parse(
-        os.environ.get("DATABASE_URL"),
+        "postgresql://postgres.hedofkpapwiocimlbxcq:g5VV0aYa3r3eNLwR@aws-1-us-east-2.pooler.supabase.com:6543/postgres",
         conn_max_age=600,
         ssl_require=True
     )
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
